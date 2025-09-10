@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+        <head>                                                                                                                     
+          <title>NIRANJAN CREATIONS</title>
+        </head>      
+  <body style="background-color:black">
+                <marquee style="color:lime;background-color:teal;font-size:35px;" direction="right" behaviour="scroll" scrollamount="15">EDIT YOUR SQL FILE HERE</marquee>
+                <center></br>
+                <button onclick="save()"style="color:lime;background-color:blue;font-size:35px;border:solid cyan">SAVE</button>
+                <button onclick="discard()"style="color:lime;background-color:blue;font-size:35px;border:solid cyan">DISCARD</button></br></br>
+                <textarea id="sql" style="width:100vw;height:100vh;color:white;background-color:black;border:solid lime;font-size:20px;" autocapitalize='off' >TYPE YOUR SQL PROGRAM HERE!</textarea>
+                <audio src="https://hacker1514.github.io./creations/click.mp3" id="m"></audio>
+                <script>
+    let music = document.getElementById("m");
+    let sqlArea = document.getElementById("sql");
+
+    function discard() {
+        music.play();
+        if(confirm("Are you sure you want to discard changes?")) {
+            location.reload();
+        }
+    }
+
+    function save() {
+        music.play();
+
+        let sqlContent = sqlArea.value;
+
+        let blob = new Blob([sqlContent], { type: "text/sql" });
+
+        let a = document.createElement("a");
+        a.href = URL.createObjectURL(blob);
+        let file=prompt("Enter File name:\n");
+        a.download = file+".Ksql";
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        alert("SQL FILE SUCCESFULLY STORED INTO YOUR DEVICE!");
+    }
+</script>
+        </body>
+</html>
